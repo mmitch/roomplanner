@@ -3,7 +3,6 @@ RoomPlanner
 
 [![Build Status](https://travis-ci.org/mmitch/roomplanner.svg?branch=master)](https://travis-ci.org/mmitch/roomplanner)
 [![Coverage Status](https://codecov.io/github/mmitch/roomplanner/coverage.svg?branch=master)](https://codecov.io/github/mmitch/roomplanner?branch=master)
-[![Dependencies](https://www.versioneye.com/user/projects/574b4da3ce8d0e004130d3c6/badge.svg)](https://www.versioneye.com/user/projects/574b4da3ce8d0e004130d3c6)
 [![GPL 3+](https://img.shields.io/badge/license-GPL%203%2B-blue.svg)](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
 
