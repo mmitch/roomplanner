@@ -10,33 +10,33 @@ import de.cgarbs.roomplanner.shape.Rectangle;
 
 public class RectangularRoom implements BaseRoom {
 	
-	private Length length;
-	private Length width;
+	private Length northSouth;
+	private Length eastWest;
 	private Length height;
 
-	public RectangularRoom(Length length, Length width, Length height) {
-		this.length = length;
-		this.width = width;
+	public RectangularRoom(Length northSouth, Length eastWest, Length height) {
+		this.northSouth = northSouth;
+		this.eastWest = eastWest;
 		this.height = height;
 	}
 
 	@Override
 	public Area getFloor() {
-		return Area.of(new Rectangle(length, width));
+		return Area.of(new Rectangle(northSouth, eastWest));
 	}
 
 	@Override
 	public Area getCeiling() {
-		return Area.of(new Rectangle(length, width));
+		return Area.of(new Rectangle(northSouth, eastWest));
 	}
 
 	@Override
 	public Area getWall() {
 		return Area.of(
-				new Rectangle(length, height),
-				new Rectangle(length, height),
-				new Rectangle(width, height),
-				new Rectangle(width, height)
+				new Rectangle(northSouth, height),
+				new Rectangle(northSouth, height),
+				new Rectangle(eastWest, height),
+				new Rectangle(eastWest, height)
 				);
 	}
 	
