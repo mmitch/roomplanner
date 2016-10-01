@@ -9,7 +9,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.test.stub.CM2;
 import de.cgarbs.roomplanner.test.stub.M2;
 import de.cgarbs.roomplanner.test.stub.StubShape;
@@ -43,4 +42,11 @@ public class AreaTest {
 				);
 	}
 
+	@Test
+	public void negateChangesValueSignum() {
+		Area area = new Area(1, AreaUnit.M2);
+		Area negated = area.negate();
+		assertThat(negated.getValue(), is(area.getValue().negate()));
+		assertThat(negated.getUnit(), is(area.getUnit()));
+	}
 }

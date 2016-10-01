@@ -8,7 +8,7 @@ import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.shape.Rectangle;
 
-public class RectangularRoom implements BaseRoom {
+public class RectangularRoom extends Room {
 	
 	private Length northSouth;
 	private Length eastWest;

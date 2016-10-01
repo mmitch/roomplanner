@@ -6,6 +6,7 @@ package de.cgarbs.roomplanner.area;
 
 import java.math.BigDecimal;
 
+import de.cgarbs.roomplanner.length.LengthUnit;
 import de.cgarbs.roomplanner.shape.Shape;
 import de.cgarbs.roomplanner.types.ScalarWithUnit;
 
@@ -27,9 +28,20 @@ public class Area extends ScalarWithUnit<AreaUnit> {
 		return area;
 	}
 
+	public static Area zero(LengthUnit unit) {
+		return new Area(BigDecimal.ZERO, unit.getSquaredUnit());
+	}
+
 	public Area add(Area otherArea) {
 		return new Area(
 				this.getValue().add(otherArea.convertTo(getUnit()).getValue()),
+				getUnit()
+				);
+	}
+
+	public Area negate() {
+		return new Area(
+				getValue().negate(),
 				getUnit()
 				);
 	}
