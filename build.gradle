@@ -3,6 +3,14 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = 'de.cgarbs.roomplanner.RoomPlanner'
 
+apply plugin: 'jacoco'
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true
+	}
+}
+
 defaultTasks 'check'
 
 repositories {
