@@ -19,12 +19,17 @@ The project homepage is at <https://github.com/mmitch/roomplanner/>
 usage
 -----
 
-Run the ``RoomPlanner`` main class (``gradle run``
-should suffice).
+Run the ``RoomPlanner`` main class (``gradle run`` should suffice).
 
-There is no configuration parser yet, so you'll have to
-edit ``RoomPlanner.java`` to enter other dimensions
-or room setups.
+There is no configuration parser yet, so you'll have to edit
+``RoomPlanner.java`` to enter other dimensions or room setups.
+
+
+dependencies
+------------
+
+While the test suite needs at least Java 8, the code itself should run
+on older versions as well (but I did not test this).
 
 
 TODOs
@@ -32,9 +37,9 @@ TODOs
 
  - support corner insets
  - support sloped ceilings
- - add 3D export to visualize the parsed room (only if I
-   really get bored, but this would help to ensure a
-   complex setup got parsed as desired) 
+ - add 3D export to visualize the parsed room (only if I really get
+   bored, but this would help to ensure a complex setup got parsed as
+   desired)
    
    
 copyright
