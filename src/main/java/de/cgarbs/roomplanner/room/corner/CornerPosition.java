@@ -4,6 +4,27 @@
  */
 package de.cgarbs.roomplanner.room.corner;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import de.cgarbs.roomplanner.room.wall.WallPosition;
+
 public enum CornerPosition {
-	NE, SE, SW, NW
+	NORTHEAST(WallPosition.NORTH),
+	SOUTHEAST(WallPosition.EAST),
+	SOUTHWEST(WallPosition.SOUTH),
+	NORTHWEST(WallPosition.WEST);
+
+	private WallPosition firstWall;
+
+	private CornerPosition(WallPosition firstWall) {
+		this.firstWall = firstWall;
+	}
+
+	public Collection<WallPosition> getAdjacentWalls() {
+		return Arrays.asList(
+				firstWall,
+				firstWall.getNextClockwise()
+				);
+	}
 }
