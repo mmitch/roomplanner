@@ -9,27 +9,26 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import de.cgarbs.roomplanner.room.RectangularRoom;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
 
-public class RectangularRoomTest {
+public class BoxRoomTest {
 	
 	@Test
-	public void floorAreaOfARectangularRoomIsWidthTimesLength() {
-		RectangularRoom testRoom = new RectangularRoom(new CM(10), new CM(20), new CM(30));
+	public void floorAreaOfABoxRoomIsWidthTimesLength() {
+		BoxRoom testRoom = new BoxRoom(new CM(10), new CM(20), new CM(30));
 		assertThat(testRoom.getFloor(), is(new CM2(200)));
 	}
 
 	@Test
-	public void ceilingAreaOfARectangularRoomIsWidthTimesLength() {
-		RectangularRoom testRoom = new RectangularRoom(new CM(10), new CM(20), new CM(30));
+	public void ceilingAreaOfABoxRoomIsWidthTimesLength() {
+		BoxRoom testRoom = new BoxRoom(new CM(10), new CM(20), new CM(30));
 		assertThat(testRoom.getCeiling(), is(new CM2(200)));
 	}
 
 	@Test
-	public void wallAreaOfARectangularRoomIsHeightMultipliedByTwoMultipliedByLengthPlusWidth() {
-		RectangularRoom testRoom = new RectangularRoom(new CM(10), new CM(20), new CM(30));
+	public void wallAreaOfABoxRoomIsHeightMultipliedByTwoMultipliedByLengthPlusWidth() {
+		BoxRoom testRoom = new BoxRoom(new CM(10), new CM(20), new CM(30));
 		// Northern Wall/Southern wall: 10 * 30 each
 		// West Wall/East Wall: 20 * 30 each
 		// total: 300 + 300 + 600 + 600 = 1800

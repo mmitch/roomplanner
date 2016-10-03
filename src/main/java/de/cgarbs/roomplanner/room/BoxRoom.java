@@ -8,13 +8,13 @@ import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.shape.Rectangle;
 
-public class RectangularRoom extends Room {
+public class BoxRoom extends Room {
 	
 	private Length northSouth;
 	private Length eastWest;
 	private Length height;
 
-	public RectangularRoom(Length northSouth, Length eastWest, Length height) {
+	public BoxRoom(Length northSouth, Length eastWest, Length height) {
 		this.northSouth = northSouth;
 		this.eastWest = eastWest;
 		this.height = height;
