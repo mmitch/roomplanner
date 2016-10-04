@@ -46,4 +46,10 @@ public class Area extends ScalarWithUnit<AreaUnit> {
 				);
 	}
 	
+	public Area divideBy(BigDecimal divisor) {
+		return new Area(
+				getValue().divide(divisor),
+				getUnit()
+				);
+	}
 }

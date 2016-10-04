@@ -15,7 +15,7 @@ public class Length extends ScalarWithUnit<LengthUnit> {
 		super(value, unit);
 	}
 
-	private Length(BigDecimal value, LengthUnit unit) {
+	public Length(BigDecimal value, LengthUnit unit) {
 		super(value, unit);
 	}
 

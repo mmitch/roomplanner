@@ -12,10 +12,16 @@ import org.junit.Test;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
 
-public class RectangleTest {
+public class RightTriangleTest {
 
 	@Test
-	public void theAreaOfARectangleIsWidthMupltipliedByHeight() {
-		assertThat(new Rectangle(new CM(2), new CM(3)).getArea(), is(new CM2(6)));
+	public void theAreaOfARightTriangleIsWidthMupltipliedByHeightDividedByTwo() {
+		assertThat(new RightTriangle(new CM(4), new CM(5)).getArea(), is(new CM2(10)));
 	}
+	
+	@Test
+	public void nineSquaredPlusTwelveSquaredEqualsFifteenSquared() {
+		assertThat(new RightTriangle(new CM(9), new CM(12)).getC(), is(new CM(15)));
+	}
+
 }
