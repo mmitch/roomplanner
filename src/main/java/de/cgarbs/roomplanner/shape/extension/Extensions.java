@@ -6,9 +6,7 @@ package de.cgarbs.roomplanner.shape.extension;
 
 import java.util.ArrayList;
 
-import de.cgarbs.roomplanner.shape.Shape;
-
-public class Extensions extends ArrayList<Shape> {
+public class Extensions extends ArrayList<Extension> {
 
 	/**
 	 * 

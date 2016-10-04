@@ -8,11 +8,14 @@ import java.util.Iterator;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
+import de.cgarbs.roomplanner.room.additional.CornerInset;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
+import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
+import de.cgarbs.roomplanner.shape.extension.Extension;
 
 public class BoxRoom extends Room {
 
@@ -48,6 +51,12 @@ public class BoxRoom extends Room {
 		return area;
 	}
 	
+	public BoxRoom setCorner(CornerPosition corner, CornerInset inset) {
+		floor.add(new Extension(inset.getFloor()));
+		ceiling.add(new Extension(inset.getCeiling()));
+		return this;
+	}
+
 	private void addFloor(Length northSouth, Length eastWest) {
 		floor = new Floor(northSouth, eastWest);
 	}

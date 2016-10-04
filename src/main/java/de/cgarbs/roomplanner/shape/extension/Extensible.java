@@ -7,7 +7,7 @@ package de.cgarbs.roomplanner.shape.extension;
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.shape.Shape;
 
-public class Extensible implements Shape {
+public class Extensible {
 
 	Extensions extensions = new Extensions();
 	Shape baseShape;
@@ -16,19 +16,16 @@ public class Extensible implements Shape {
 		this.baseShape = baseShape;
 	}
 
-	@Override
 	public Area getArea() {
 		Area area = baseShape.getArea();
-		for (Shape extension: extensions) {
+		for (Extension extension: extensions) {
 			area = area.add(extension.getArea());
 		}
 		return area;
 	}
 
-	public Extensible add(Shape extension) {
+	public Extensible add(Extension extension) {
 		extensions.add(extension);
 		return this;
 	}
-	
-	
 }
