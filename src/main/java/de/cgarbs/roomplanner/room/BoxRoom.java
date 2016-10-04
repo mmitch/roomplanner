@@ -9,7 +9,6 @@ import java.util.List;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
-import de.cgarbs.roomplanner.room.additional.CornerInset;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
@@ -17,9 +16,10 @@ import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
 import de.cgarbs.roomplanner.shape.Rectangle;
+import de.cgarbs.roomplanner.shape.extension.CornerInset;
 import de.cgarbs.roomplanner.shape.extension.Extension;
 
-public class BoxRoom extends Room {
+public class BoxRoom implements Room {
 
 	Floor floor;
 	Ceiling ceiling;
@@ -54,8 +54,9 @@ public class BoxRoom extends Room {
 	}
 	
 	public BoxRoom setCornerInset(CornerPosition corner, CornerInset inset) { // FIXME ugly, refactor!
-		floor.add(new Extension(inset.getFloor()));
-		ceiling.add(new Extension(inset.getCeiling()));
+		Area insetArea = new Rectangle(inset.getFirstWall(), inset.getSecondWall()).getArea().negate();
+		floor.add(new Extension(insetArea));
+		ceiling.add(new Extension(insetArea));
 
 		List<WallPosition> adjacentWalls = corner.getAdjacentWalls();
 		addWallChangesFromCornerInset(adjacentWalls.get(0), inset.getFirstWall());

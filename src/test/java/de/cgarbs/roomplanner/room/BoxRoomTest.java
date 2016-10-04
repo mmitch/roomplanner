@@ -9,8 +9,8 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import de.cgarbs.roomplanner.room.additional.CornerInset;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
+import de.cgarbs.roomplanner.shape.extension.CornerInset;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
 

@@ -7,7 +7,8 @@ package de.cgarbs.roomplanner;
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.BoxRoom;
 import de.cgarbs.roomplanner.room.Room;
-import de.cgarbs.roomplanner.room.additional.CornerInset;
+import de.cgarbs.roomplanner.room.corner.CornerPosition;
+import de.cgarbs.roomplanner.shape.extension.CornerInset;
 
 public class RoomPlanner {
 
@@ -23,14 +24,14 @@ public class RoomPlanner {
 		System.out.println("given a basic room of " + length + " x " + width
 				+ " with a ceiling height of " + height);
 
-		Room room = new BoxRoom(length, width, height);
+		BoxRoom room = new BoxRoom(length, width, height);
 
 		printRoom(room);
 
 		System.out.println("adding a corner inset of " + cornerLength + " x " + cornerWidth);
 
 		CornerInset inset = new CornerInset(cornerLength, cornerWidth);
-		room = room.add(inset);
+		room = room.setCornerInset(CornerPosition.NORTHWEST, inset);
 
 		printRoom(room);
 	}

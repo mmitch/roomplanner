@@ -2,11 +2,9 @@
  * Copyright 2016 (C)  Christian Garbs <mitch@cgarbs.de>
  * Licensed under GNU GPL 3 (or later)
  */
-package de.cgarbs.roomplanner.room.additional;
+package de.cgarbs.roomplanner.shape.extension;
 
-import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
-import de.cgarbs.roomplanner.shape.Rectangle;
 
 /**
  * A corner inset is an inward facing corner in a corner :-)
@@ -19,7 +17,7 @@ import de.cgarbs.roomplanner.shape.Rectangle;
  * @author Christian Garbs <mitch@cgarbs.de>
  **/
 /*
- * Example: Corner inset in the top-left corner (only wo
+ * Example: Corner inset in the top-left corner
  *
  *     ########
  *     #      #
@@ -31,7 +29,7 @@ import de.cgarbs.roomplanner.shape.Rectangle;
  *   #        #
  *   ##########
  */
-public class CornerInset implements Additional {
+public class CornerInset {
 
 	private Length firstWall;
 	private Length secondWall;
@@ -41,27 +39,12 @@ public class CornerInset implements Additional {
 		this.secondWall = secondWall;
 	}
 
-	@Override
-	public Area getFloor() {
-		return new Rectangle(firstWall, secondWall).getArea().negate();
-	}
-
-	@Override
-	public Area getWall() {
-		return Area.zero(firstWall.getUnit());
-	}
-
-	@Override
-	public Area getCeiling() {
-		return new Rectangle(firstWall, secondWall).getArea().negate();
-	}
-
 	public Length getFirstWall() {
 		return firstWall;
 	}
 
 	public Length getSecondWall() {
-		return firstWall;
+		return secondWall;
 	}
 
 }

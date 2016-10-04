@@ -4,12 +4,12 @@
  */
 package de.cgarbs.roomplanner.room;
 
-import de.cgarbs.roomplanner.room.additional.Additional;
+import de.cgarbs.roomplanner.area.Area;
 
-public abstract class Room implements Additional {
+public interface Room {
 
-	public Room add(Additional additional) {
-		return new ComplexRoom(this, additional);
-	}
+	public Area getFloor();
+	public Area getCeiling();
+	public Area getWall();
 	
 }
