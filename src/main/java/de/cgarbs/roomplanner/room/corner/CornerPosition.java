@@ -5,7 +5,7 @@
 package de.cgarbs.roomplanner.room.corner;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 
@@ -21,7 +21,7 @@ public enum CornerPosition {
 		this.firstWall = firstWall;
 	}
 
-	public Collection<WallPosition> getAdjacentWalls() {
+	public List<WallPosition> getAdjacentWalls() {
 		return Arrays.asList(
 				firstWall,
 				firstWall.getNextClockwise()
