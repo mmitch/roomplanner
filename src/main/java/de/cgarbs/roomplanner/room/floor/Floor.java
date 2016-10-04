@@ -6,11 +6,12 @@ package de.cgarbs.roomplanner.room.floor;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.shape.Rectangle;
+import de.cgarbs.roomplanner.shape.extension.Extensible;
 
-public class Floor extends Rectangle {
+public class Floor extends Extensible {
 
 	public Floor(Length width, Length height) {
-		super(width, height);
+		super(new Rectangle(width, height));
 	}
 
 }

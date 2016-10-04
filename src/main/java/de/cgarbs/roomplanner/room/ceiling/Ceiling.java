@@ -6,11 +6,12 @@ package de.cgarbs.roomplanner.room.ceiling;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.shape.Rectangle;
+import de.cgarbs.roomplanner.shape.extension.Extensible;
 
-public class Ceiling extends Rectangle {
+public class Ceiling extends Extensible {
 
 	public Ceiling(Length width, Length height) {
-		super(width, height);
+		super(new Rectangle(width, height));
 	}
 
 }
