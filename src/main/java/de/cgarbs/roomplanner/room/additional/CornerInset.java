@@ -33,27 +33,35 @@ import de.cgarbs.roomplanner.shape.Rectangle;
  */
 public class CornerInset implements Additional {
 
-	private Length northSouth;
-	private Length eastWest;
+	private Length firstWall;
+	private Length secondWall;
 
-	public CornerInset(Length northSouth, Length eastWest) {
-		this.northSouth = northSouth;
-		this.eastWest = eastWest;
+	public CornerInset(Length firstWall, Length secondWall) {
+		this.firstWall = firstWall;
+		this.secondWall = secondWall;
 	}
 
 	@Override
 	public Area getFloor() {
-		return new Rectangle(northSouth, eastWest).getArea().negate();
+		return new Rectangle(firstWall, secondWall).getArea().negate();
 	}
 
 	@Override
 	public Area getWall() {
-		return Area.zero(northSouth.getUnit());
+		return Area.zero(firstWall.getUnit());
 	}
 
 	@Override
 	public Area getCeiling() {
-		return new Rectangle(northSouth, eastWest).getArea().negate();
+		return new Rectangle(firstWall, secondWall).getArea().negate();
+	}
+
+	public Length getFirstWall() {
+		return firstWall;
+	}
+
+	public Length getSecondWall() {
+		return firstWall;
 	}
 
 }

@@ -10,8 +10,14 @@ import de.cgarbs.roomplanner.shape.extension.Extensible;
 
 public class Wall extends Extensible {
 
+	Length height;
+
 	public Wall(Length length, Length height) {
 		super(new Rectangle(length, height));
+		this.height = height;
 	}
 
+	public Length getHeight() {
+		return height;
+	}
 }

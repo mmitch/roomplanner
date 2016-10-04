@@ -5,6 +5,7 @@
 package de.cgarbs.roomplanner.room;
 
 import java.util.Iterator;
+import java.util.List;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
@@ -15,6 +16,7 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
+import de.cgarbs.roomplanner.shape.Rectangle;
 import de.cgarbs.roomplanner.shape.extension.Extension;
 
 public class BoxRoom extends Room {
@@ -51,10 +53,25 @@ public class BoxRoom extends Room {
 		return area;
 	}
 	
-	public BoxRoom setCorner(CornerPosition corner, CornerInset inset) {
+	public BoxRoom setCornerInset(CornerPosition corner, CornerInset inset) { // FIXME ugly, refactor!
 		floor.add(new Extension(inset.getFloor()));
 		ceiling.add(new Extension(inset.getCeiling()));
+
+		List<WallPosition> adjacentWalls = corner.getAdjacentWalls();
+		addWallChangesFromCornerInset(adjacentWalls.get(0), inset.getFirstWall());
+		addWallChangesFromCornerInset(adjacentWalls.get(1), inset.getSecondWall());
+
 		return this;
+	}
+
+	private void addWallChangesFromCornerInset(WallPosition wallPosition, Length length) { // FIXME ugly, refactor!
+		Wall wall = walls.get(wallPosition);
+		Length height = wall.getHeight();
+		Area wallArea = new Rectangle(height, length).getArea();
+
+		// this is a zero-sum change, but for bookkeeping sakes we record it
+		wall.add(new Extension(wallArea.negate()));
+		wall.add(new Extension(wallArea));
 	}
 
 	private void addFloor(Length northSouth, Length eastWest) {
