@@ -43,8 +43,10 @@ public class CornerInset implements Extender {
 	private static final int WALL_COUNT = 2;
 
 	private Length[] length = new Length[WALL_COUNT];
+	private CornerPosition corner;
 
-	public CornerInset(Length firstWall, Length secondWall) {
+	public CornerInset(CornerPosition corner, Length firstWall, Length secondWall) {
+		this.corner = corner;
 		length[FIRST_WALL] = firstWall;
 		length[SECOND_WALL] = secondWall;
 	}
@@ -60,16 +62,17 @@ public class CornerInset implements Extender {
 	}
 
 	@Override
-	public void extendWalls(Walls walls, CornerPosition corner) {
-		extendWall(walls, FIRST_WALL, corner);
-		extendWall(walls, SECOND_WALL, corner);
+	public void extendWalls(Walls walls) {
+		for (int wallNumber = 0; wallNumber < WALL_COUNT; wallNumber++) {
+			extendWall(walls, wallNumber);
+		}
 	}
 	
 	private Area getCutoutArea() {
 		return new Rectangle(length[FIRST_WALL], length[SECOND_WALL]).getArea().negate();
 	}
 
-	private void extendWall(Walls walls, int wallNumber, CornerPosition corner) {
+	private void extendWall(Walls walls, int wallNumber) {
 		Wall wall = walls.get(corner.getAdjacentWalls().get(wallNumber));
 		Length height = wall.getHeight();
 		Area wallArea = new Rectangle(height, length[wallNumber]).getArea();

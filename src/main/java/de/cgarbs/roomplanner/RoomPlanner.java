@@ -31,8 +31,8 @@ public class RoomPlanner {
 
 		System.out.println("adding a corner inset of " + cornerLength + " x " + cornerWidth);
 
-		Extender inset = new CornerInset(cornerLength, cornerWidth);
-		room = room.setCornerInset(CornerPosition.NORTHWEST, inset);
+		Extender inset = new CornerInset(CornerPosition.NORTHWEST, cornerLength, cornerWidth);
+		room = room.setCornerInset(inset);
 
 		printRoom(room);
 	}

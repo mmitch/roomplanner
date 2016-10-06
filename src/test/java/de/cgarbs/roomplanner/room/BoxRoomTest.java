@@ -41,21 +41,21 @@ public class BoxRoomTest {
 	@Test
 	public void addingCornerInsetReducesFloorArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(new CM(1), new CM(2));
-		assertThat(testRoom.setCornerInset(CornerPosition.NORTHWEST, inset).getFloor(), is(new CM2(10)));
+		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		assertThat(testRoom.setCornerInset(inset).getFloor(), is(new CM2(10)));
 	}
 
 	@Test
 	public void addingCornerInsetReducesCeilingArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(new CM(1), new CM(2));
-		assertThat(testRoom.setCornerInset(CornerPosition.NORTHWEST, inset).getCeiling(), is(new CM2(10)));
+		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		assertThat(testRoom.setCornerInset(inset).getCeiling(), is(new CM2(10)));
 	}
 
 	@Test
 	public void addingCornerInsetDoesNotChangeWallArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(new CM(1), new CM(2));
-		assertThat(testRoom.setCornerInset(CornerPosition.NORTHWEST, inset).getWall(), is(new CM2(70)));
+		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		assertThat(testRoom.setCornerInset(inset).getWall(), is(new CM2(70)));
 	}
 }

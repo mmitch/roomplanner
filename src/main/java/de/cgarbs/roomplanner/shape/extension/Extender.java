@@ -5,7 +5,6 @@
 package de.cgarbs.roomplanner.shape.extension;
 
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
-import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Walls;
 
@@ -15,6 +14,6 @@ public interface Extender {
 
 	void extendCeiling(Ceiling ceiling);
 
-	void extendWalls(Walls walls, CornerPosition corner);
+	void extendWalls(Walls walls);
 
 }
