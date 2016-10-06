@@ -2,7 +2,7 @@
  * Copyright 2016 (C)  Christian Garbs <mitch@cgarbs.de>
  * Licensed under GNU GPL 3 (or later)
  */
-package de.cgarbs.roomplanner.shape.extension;
+package de.cgarbs.roomplanner.room.extension;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
@@ -37,7 +37,7 @@ import de.cgarbs.roomplanner.shape.Rectangle;
  *   #        #
  *   ##########
  */
-public class CornerInset implements Extender {
+public class CornerInset implements Extension {
 
 	private static final int FIRST_WALL = 0;
 	private static final int SECOND_WALL = 1;

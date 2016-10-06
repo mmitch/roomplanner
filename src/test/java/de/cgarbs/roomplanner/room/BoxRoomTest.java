@@ -10,8 +10,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
-import de.cgarbs.roomplanner.shape.extension.CornerInset;
-import de.cgarbs.roomplanner.shape.extension.Extender;
+import de.cgarbs.roomplanner.room.extension.CornerInset;
+import de.cgarbs.roomplanner.room.extension.Extension;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
 
@@ -41,21 +41,21 @@ public class BoxRoomTest {
 	@Test
 	public void addingCornerInsetReducesFloorArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		Extension inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
 		assertThat(testRoom.add(inset).getFloorArea(), is(new CM2(10)));
 	}
 
 	@Test
 	public void addingCornerInsetReducesCeilingArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		Extension inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
 		assertThat(testRoom.add(inset).getCeilingArea(), is(new CM2(10)));
 	}
 
 	@Test
 	public void addingCornerInsetDoesNotChangeWallArea() {
 		BoxRoom testRoom = new BoxRoom(new CM(3), new CM(4), new CM(5));
-		Extender inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
+		Extension inset = new CornerInset(CornerPosition.NORTHWEST, new CM(1), new CM(2));
 		assertThat(testRoom.add(inset).getWallArea(), is(new CM2(70)));
 	}
 }

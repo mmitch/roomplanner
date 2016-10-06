@@ -8,10 +8,10 @@ import java.util.Iterator;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
+import de.cgarbs.roomplanner.room.extension.Extension;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.Walls;
-import de.cgarbs.roomplanner.shape.extension.Extender;
 
 public class ExtendableRoom implements Room {
 
@@ -43,10 +43,10 @@ public class ExtendableRoom implements Room {
 		return area;
 	}
 
-	public ExtendableRoom add(Extender inset) {
-		inset.extendFloor(floor);
-		inset.extendCeiling(ceiling);
-		inset.extendWalls(walls);
+	public ExtendableRoom add(Extension extension) {
+		extension.extendFloor(floor);
+		extension.extendCeiling(ceiling);
+		extension.extendWalls(walls);
 		return this;
 	}
 

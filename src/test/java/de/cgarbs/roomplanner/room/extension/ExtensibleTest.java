@@ -2,13 +2,14 @@
  * Copyright 2016 (C)  Christian Garbs <mitch@cgarbs.de>
  * Licensed under GNU GPL 3 (or later)
  */
-package de.cgarbs.roomplanner.shape.extension;
+package de.cgarbs.roomplanner.room.extension;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import de.cgarbs.roomplanner.room.extension.Extensible;
 import de.cgarbs.roomplanner.shape.GenericShape;
 import de.cgarbs.roomplanner.shape.Rectangle;
 import de.cgarbs.roomplanner.shape.RightTriangle;
