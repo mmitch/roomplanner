@@ -6,10 +6,11 @@ package de.cgarbs.roomplanner.shape.extension;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.shape.Shape;
+import de.cgarbs.roomplanner.shape.Shapes;
 
 public class Extensible {
 
-	Extensions extensions = new Extensions();
+	Shapes extensions = new Shapes();
 	Shape baseShape;
 	
 	public Extensible(Shape baseShape) {
@@ -18,13 +19,13 @@ public class Extensible {
 
 	public Area getArea() {
 		Area area = baseShape.getArea();
-		for (Extension extension: extensions) {
+		for (Shape extension: extensions) {
 			area = area.add(extension.getArea());
 		}
 		return area;
 	}
 
-	public Extensible add(Extension extension) {
+	public Extensible add(Shape extension) {
 		extensions.add(extension);
 		return this;
 	}

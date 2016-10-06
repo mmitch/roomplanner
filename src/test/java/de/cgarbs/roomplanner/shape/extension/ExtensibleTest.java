@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import de.cgarbs.roomplanner.shape.GenericShape;
 import de.cgarbs.roomplanner.shape.Rectangle;
 import de.cgarbs.roomplanner.shape.RightTriangle;
 import de.cgarbs.roomplanner.shape.Shape;
@@ -28,7 +29,7 @@ public class ExtensibleTest {
 	public void extensionAreaIsAddedToBaseShapeArea()
 	{
 		Shape baseShape = new Rectangle(new CM(3), new CM(3)); 
-		Extension extension = new Extension(new Rectangle(new CM(2), new CM(2))); 
+		GenericShape extension = new GenericShape(new Rectangle(new CM(2), new CM(2)));
 		assertThat(new Extensible(baseShape).add(extension).getArea(), is(new CM2(13)));
 	}
 	

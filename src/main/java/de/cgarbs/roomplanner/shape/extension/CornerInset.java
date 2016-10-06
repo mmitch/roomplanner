@@ -11,6 +11,7 @@ import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.Walls;
+import de.cgarbs.roomplanner.shape.GenericShape;
 import de.cgarbs.roomplanner.shape.Rectangle;
 
 /**
@@ -53,12 +54,12 @@ public class CornerInset implements Extender {
 
 	@Override
 	public void extendFloor(Floor floor) {
-		floor.add(new Extension(getCutoutArea()));
+		floor.add(new GenericShape(getCutoutArea()));
 	}
 
 	@Override
 	public void extendCeiling(Ceiling ceiling) {
-		ceiling.add(new Extension(getCutoutArea()));
+		ceiling.add(new GenericShape(getCutoutArea()));
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class CornerInset implements Extender {
 		Area wallArea = new Rectangle(height, length[wallNumber]).getArea();
 
 		// this is a zero-sum change, but for bookkeeping sakes we record it
-		wall.add(new Extension(wallArea.negate()));
-		wall.add(new Extension(wallArea));
+		wall.add(new GenericShape(wallArea.negate()));
+		wall.add(new GenericShape(wallArea));
 	}
 }

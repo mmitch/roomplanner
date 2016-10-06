@@ -2,20 +2,19 @@
  * Copyright 2016 (C)  Christian Garbs <mitch@cgarbs.de>
  * Licensed under GNU GPL 3 (or later)
  */
-package de.cgarbs.roomplanner.shape.extension;
+package de.cgarbs.roomplanner.shape;
 
 import de.cgarbs.roomplanner.area.Area;
-import de.cgarbs.roomplanner.shape.Shape;
 
-public class Extension implements Shape {
+public class GenericShape implements Shape {
 
 	Area area;
 	
-	public Extension(Shape shape) {
+	public GenericShape(Shape shape) {
 		this(shape.getArea());
 	}
 
-	public Extension(Area area) {
+	public GenericShape(Area area) {
 		this.area = area;
 	}
 
