@@ -9,6 +9,7 @@ import de.cgarbs.roomplanner.room.BoxRoom;
 import de.cgarbs.roomplanner.room.Room;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.shape.extension.CornerInset;
+import de.cgarbs.roomplanner.shape.extension.Extender;
 
 public class RoomPlanner {
 
@@ -30,7 +31,7 @@ public class RoomPlanner {
 
 		System.out.println("adding a corner inset of " + cornerLength + " x " + cornerWidth);
 
-		CornerInset inset = new CornerInset(cornerLength, cornerWidth);
+		Extender inset = new CornerInset(cornerLength, cornerWidth);
 		room = room.setCornerInset(CornerPosition.NORTHWEST, inset);
 
 		printRoom(room);

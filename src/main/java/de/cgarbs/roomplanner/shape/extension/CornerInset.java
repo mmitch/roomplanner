@@ -4,7 +4,14 @@
  */
 package de.cgarbs.roomplanner.shape.extension;
 
+import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
+import de.cgarbs.roomplanner.room.ceiling.Ceiling;
+import de.cgarbs.roomplanner.room.corner.CornerPosition;
+import de.cgarbs.roomplanner.room.floor.Floor;
+import de.cgarbs.roomplanner.room.wall.Wall;
+import de.cgarbs.roomplanner.room.wall.Walls;
+import de.cgarbs.roomplanner.shape.Rectangle;
 
 /**
  * A corner inset is an inward facing corner in a corner :-)
@@ -29,22 +36,46 @@ import de.cgarbs.roomplanner.length.Length;
  *   #        #
  *   ##########
  */
-public class CornerInset {
+public class CornerInset implements Extender {
 
-	private Length firstWall;
-	private Length secondWall;
+	private static final int FIRST_WALL = 0;
+	private static final int SECOND_WALL = 1;
+	private static final int WALL_COUNT = 2;
+
+	private Length[] length = new Length[WALL_COUNT];
 
 	public CornerInset(Length firstWall, Length secondWall) {
-		this.firstWall = firstWall;
-		this.secondWall = secondWall;
+		length[FIRST_WALL] = firstWall;
+		length[SECOND_WALL] = secondWall;
 	}
 
-	public Length getFirstWall() {
-		return firstWall;
+	@Override
+	public void extendFloor(Floor floor) {
+		floor.add(new Extension(getCutoutArea()));
 	}
 
-	public Length getSecondWall() {
-		return secondWall;
+	@Override
+	public void extendCeiling(Ceiling ceiling) {
+		ceiling.add(new Extension(getCutoutArea()));
 	}
 
+	@Override
+	public void extendWalls(Walls walls, CornerPosition corner) {
+		extendWall(walls, FIRST_WALL, corner);
+		extendWall(walls, SECOND_WALL, corner);
+	}
+	
+	private Area getCutoutArea() {
+		return new Rectangle(length[FIRST_WALL], length[SECOND_WALL]).getArea().negate();
+	}
+
+	private void extendWall(Walls walls, int wallNumber, CornerPosition corner) {
+		Wall wall = walls.get(corner.getAdjacentWalls().get(wallNumber));
+		Length height = wall.getHeight();
+		Area wallArea = new Rectangle(height, length[wallNumber]).getArea();
+
+		// this is a zero-sum change, but for bookkeeping sakes we record it
+		wall.add(new Extension(wallArea.negate()));
+		wall.add(new Extension(wallArea));
+	}
 }

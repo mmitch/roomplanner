@@ -5,7 +5,6 @@
 package de.cgarbs.roomplanner.room;
 
 import java.util.Iterator;
-import java.util.List;
 
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
@@ -15,9 +14,7 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
-import de.cgarbs.roomplanner.shape.Rectangle;
-import de.cgarbs.roomplanner.shape.extension.CornerInset;
-import de.cgarbs.roomplanner.shape.extension.Extension;
+import de.cgarbs.roomplanner.shape.extension.Extender;
 
 public class BoxRoom implements Room {
 
@@ -53,26 +50,11 @@ public class BoxRoom implements Room {
 		return area;
 	}
 	
-	public BoxRoom setCornerInset(CornerPosition corner, CornerInset inset) { // FIXME ugly, refactor!
-		Area insetArea = new Rectangle(inset.getFirstWall(), inset.getSecondWall()).getArea().negate();
-		floor.add(new Extension(insetArea));
-		ceiling.add(new Extension(insetArea));
-
-		List<WallPosition> adjacentWalls = corner.getAdjacentWalls();
-		addWallChangesFromCornerInset(adjacentWalls.get(0), inset.getFirstWall());
-		addWallChangesFromCornerInset(adjacentWalls.get(1), inset.getSecondWall());
-
+	public BoxRoom setCornerInset(CornerPosition corner, Extender inset) {
+		inset.extendFloor(floor);
+		inset.extendCeiling(ceiling);
+		inset.extendWalls(walls, corner);
 		return this;
-	}
-
-	private void addWallChangesFromCornerInset(WallPosition wallPosition, Length length) { // FIXME ugly, refactor!
-		Wall wall = walls.get(wallPosition);
-		Length height = wall.getHeight();
-		Area wallArea = new Rectangle(height, length).getArea();
-
-		// this is a zero-sum change, but for bookkeeping sakes we record it
-		wall.add(new Extension(wallArea.negate()));
-		wall.add(new Extension(wallArea));
 	}
 
 	private void addFloor(Length northSouth, Length eastWest) {
