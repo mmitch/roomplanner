@@ -8,8 +8,8 @@ import de.cgarbs.roomplanner.area.Area;
 
 public interface Room {
 
-	public Area getFloor();
-	public Area getCeiling();
-	public Area getWall();
+	public Area getFloorArea();
+	public Area getCeilingArea();
+	public Area getWallArea();
 	
 }

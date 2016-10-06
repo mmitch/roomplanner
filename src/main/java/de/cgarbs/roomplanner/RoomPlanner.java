@@ -6,6 +6,7 @@ package de.cgarbs.roomplanner;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.BoxRoom;
+import de.cgarbs.roomplanner.room.ExtendableRoom;
 import de.cgarbs.roomplanner.room.Room;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.shape.extension.CornerInset;
@@ -25,23 +26,23 @@ public class RoomPlanner {
 		System.out.println("given a basic room of " + length + " x " + width
 				+ " with a ceiling height of " + height);
 
-		BoxRoom room = new BoxRoom(length, width, height);
+		ExtendableRoom room = new BoxRoom(length, width, height);
 
 		printRoom(room);
 
 		System.out.println("adding a corner inset of " + cornerLength + " x " + cornerWidth);
 
 		Extender inset = new CornerInset(CornerPosition.NORTHWEST, cornerLength, cornerWidth);
-		room = room.setCornerInset(inset);
+		room = room.add(inset);
 
 		printRoom(room);
 	}
 
 	private static void printRoom(Room room) {
 		System.out.println();
-		System.out.println("  the floor   area is " + room.getFloor());
-		System.out.println("  the wall    area is " + room.getWall());
-		System.out.println("  the ceiling area is " + room.getCeiling());
+		System.out.println("  the floor   area is " + room.getFloorArea());
+		System.out.println("  the wall    area is " + room.getWallArea());
+		System.out.println("  the ceiling area is " + room.getCeilingArea());
 		System.out.println();
 	}
 	

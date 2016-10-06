@@ -4,56 +4,19 @@
  */
 package de.cgarbs.roomplanner.room;
 
-import java.util.Iterator;
-
-import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
-import de.cgarbs.roomplanner.room.wall.Walls;
-import de.cgarbs.roomplanner.shape.extension.Extender;
 
-public class BoxRoom implements Room {
-
-	Floor floor;
-	Ceiling ceiling;
-
-	Walls walls = new Walls();
+public class BoxRoom extends ExtendableRoom {
 
 	public BoxRoom(Length northSouth, Length eastWest, Length height) {
 		addFloor(northSouth, eastWest);
 		addCeiling(northSouth, eastWest);
 
 		addWalls(northSouth, eastWest, height);
-	}
-
-	@Override
-	public Area getFloor() {
-		return floor.getArea();
-	}
-
-	@Override
-	public Area getCeiling() {
-		return ceiling.getArea();
-	}
-
-	@Override
-	public Area getWall() {
-		Iterator<Wall> iter = walls.values().iterator();
-		Area area = iter.next().getArea();
-		while (iter.hasNext()) {
-			area = area.add(iter.next().getArea());
-		}
-		return area;
-	}
-	
-	public BoxRoom setCornerInset(Extender inset) {
-		inset.extendFloor(floor);
-		inset.extendCeiling(ceiling);
-		inset.extendWalls(walls);
-		return this;
 	}
 
 	private void addFloor(Length northSouth, Length eastWest) {
