@@ -13,13 +13,13 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.Walls;
 
-public class ExtendableRoom implements Room {
+public class ExtensibleRoom implements Room {
 
 	protected Floor floor;
 	protected Ceiling ceiling;
 	protected Walls walls = new Walls();
 
-	public ExtendableRoom() {
+	public ExtensibleRoom() {
 		super();
 	}
 
@@ -43,7 +43,7 @@ public class ExtendableRoom implements Room {
 		return area;
 	}
 
-	public ExtendableRoom add(Extension extension) {
+	public ExtensibleRoom add(Extension extension) {
 		extension.extendFloor(floor);
 		extension.extendCeiling(ceiling);
 		extension.extendWalls(walls);

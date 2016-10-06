@@ -10,7 +10,7 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 
-public class BoxRoom extends ExtendableRoom {
+public class BoxRoom extends ExtensibleRoom {
 
 	public BoxRoom(Length northSouth, Length eastWest, Length height) {
 		addFloor(northSouth, eastWest);

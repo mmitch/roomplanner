@@ -6,7 +6,7 @@ package de.cgarbs.roomplanner;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.BoxRoom;
-import de.cgarbs.roomplanner.room.ExtendableRoom;
+import de.cgarbs.roomplanner.room.ExtensibleRoom;
 import de.cgarbs.roomplanner.room.Room;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.extension.CornerInset;
@@ -26,7 +26,7 @@ public class RoomPlanner {
 		System.out.println("given a basic room of " + length + " x " + width
 				+ " with a ceiling height of " + height);
 
-		ExtendableRoom room = new BoxRoom(length, width, height);
+		ExtensibleRoom room = new BoxRoom(length, width, height);
 
 		printRoom(room);
 
