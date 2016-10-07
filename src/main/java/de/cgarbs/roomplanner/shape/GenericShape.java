@@ -10,10 +10,6 @@ public class GenericShape implements Shape {
 
 	private Area area;
 	
-	public GenericShape(Shape shape) {
-		this(shape.getArea());
-	}
-
 	public GenericShape(Area area) {
 		this.area = area;
 	}
