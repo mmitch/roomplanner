@@ -8,7 +8,7 @@ import de.cgarbs.roomplanner.area.Area;
 
 public class GenericShape implements Shape {
 
-	Area area;
+	private Area area;
 	
 	public GenericShape(Shape shape) {
 		this(shape.getArea());
