@@ -39,6 +39,12 @@ public class ExtensibleRoomTest {
 		ExtensibleRoom testRoom = getTestRoom();
 		assertThat(testRoom.add(getExtension()).getWallArea(), is(new CM2(7)));
 	}
+	
+	@Test
+	public void addingMultipleExtensionsYieldsMultipleChanges() {
+		ExtensibleRoom testRoom = getTestRoom();
+		assertThat(testRoom.add(getExtension()).add(getExtension()).getFloorArea(), is(new CM2(4)));
+	}
 
 	/**
 	 * returns a new room with floor=2cm², ceiling=3cm² and one wall with 4cm²
