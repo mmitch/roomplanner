@@ -15,12 +15,14 @@ import de.cgarbs.roomplanner.room.wall.Walls;
 
 public class ExtensibleRoom implements Room {
 
-	protected Floor floor;
-	protected Ceiling ceiling;
-	protected Walls walls = new Walls();
+	private Floor floor;
+	private Ceiling ceiling;
+	private Walls walls;
 
-	public ExtensibleRoom() {
-		super();
+	public ExtensibleRoom(Floor floor, Ceiling ceiling, Walls walls) {
+		this.floor = floor;
+		this.ceiling = ceiling;
+		this.walls = walls;
 	}
 
 	@Override
@@ -49,5 +51,4 @@ public class ExtensibleRoom implements Room {
 		extension.extendWalls(walls);
 		return this;
 	}
-
 }
