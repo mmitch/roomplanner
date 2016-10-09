@@ -23,13 +23,28 @@ public class ExtensibleTest {
 		Shape baseShape = new RightTriangle(new CM(2), new CM(3)); 
 		assertThat(new Extensible(baseShape).getArea(), is(baseShape.getArea()));
 	}
-	
+
+	@Test
+	public void plainExtensibleIsNotExtended()
+	{
+		Shape baseShape = new RightTriangle(new CM(2), new CM(3));
+		assertThat(new Extensible(baseShape).isExtended(), is(false));
+	}
+
 	@Test
 	public void extensionAreaIsAddedToBaseShapeArea()
 	{
 		Shape baseShape = new Rectangle(new CM(3), new CM(3)); 
 		Shape extension = new Rectangle(new CM(2), new CM(2));
 		assertThat(new Extensible(baseShape).add(extension).getArea(), is(new CM2(13)));
+	}
+
+	@Test
+	public void exteinsibleWithExtensionIsExtended()
+	{
+		Shape baseShape = new RightTriangle(new CM(2), new CM(3));
+		Shape extension = new RightTriangle(new CM(2), new CM(3));
+		assertThat(new Extensible(baseShape).add(extension).isExtended(), is(true));
 	}
 	
 }

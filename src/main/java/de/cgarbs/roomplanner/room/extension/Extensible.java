@@ -29,4 +29,8 @@ public class Extensible {
 		extensions.add(extension);
 		return this;
 	}
+
+	public boolean isExtended() {
+		return !extensions.isEmpty();
+	}
 }
