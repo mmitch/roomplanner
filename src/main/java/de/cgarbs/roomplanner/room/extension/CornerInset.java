@@ -25,7 +25,7 @@ import de.cgarbs.roomplanner.shape.Rectangle;
  * @author Christian Garbs <mitch@cgarbs.de>
  **/
 /*
- * Example: Corner inset in the top-left corner
+ * Example: Corner inset in the north-west corner
  *
  *     ########
  *     #      #
