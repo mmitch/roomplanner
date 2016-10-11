@@ -54,12 +54,12 @@ public class CornerInset implements Extension {
 
 	@Override
 	public void extendFloor(Floor floor) {
-		floor.add(new Shape(getCutoutArea()));
+		floor.add(getCutout());
 	}
 
 	@Override
 	public void extendCeiling(Ceiling ceiling) {
-		ceiling.add(new Shape(getCutoutArea()));
+		ceiling.add(getCutout());
 	}
 
 	@Override
@@ -69,17 +69,17 @@ public class CornerInset implements Extension {
 		}
 	}
 	
-	private Area getCutoutArea() {
-		return new Rectangle(length[FIRST_WALL], length[SECOND_WALL]).getArea().negate();
+	private Shape getCutout() {
+		return new Rectangle(length[FIRST_WALL], length[SECOND_WALL]).negate();
 	}
 
 	private void extendWall(Walls walls, int wallNumber) {
 		Wall wall = walls.get(corner.getAdjacentWalls().get(wallNumber));
 		Length height = wall.getHeight();
-		Area wallArea = new Rectangle(height, length[wallNumber]).getArea();
+		Shape insetWall = new Rectangle(height, length[wallNumber]);
 
 		// this is a zero-sum change, but for bookkeeping sakes we record it
-		wall.add(new Shape(wallArea.negate()));
-		wall.add(new Shape(wallArea));
+		wall.add(insetWall.negate());
+		wall.add(insetWall);
 	}
 }
