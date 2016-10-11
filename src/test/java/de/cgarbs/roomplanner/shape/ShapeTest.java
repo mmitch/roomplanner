@@ -17,7 +17,7 @@ public class ShapeTest {
 	@Test
 	public void negatedShapeReturnsNegatedArea() {
 		Area area = new CM2(2);
-		Shape negatedShape = new GenericShape(area).negate();
+		Shape negatedShape = new Shape(area).negate();
 		assertThat(negatedShape.getArea(), is(area.negate()));
 	}
 }

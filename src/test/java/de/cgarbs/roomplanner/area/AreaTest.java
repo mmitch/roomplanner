@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import de.cgarbs.roomplanner.shape.GenericShape;
+import de.cgarbs.roomplanner.shape.Shape;
 import de.cgarbs.roomplanner.test.stub.CM2;
 import de.cgarbs.roomplanner.test.stub.M2;
 
@@ -24,9 +24,9 @@ public class AreaTest {
 	public void theAreaOfMultipleShapesIsTheSumOfTheirAreas() {
 		assertThat(
 				Area.of(
-					new GenericShape(new CM2(1)),
-					new GenericShape(new CM2(1)),
-					new GenericShape(new CM2(1))
+					new Shape(new CM2(1)),
+					new Shape(new CM2(1)),
+					new Shape(new CM2(1))
 						),
 				is(new CM2(3)));
 	}
@@ -35,8 +35,8 @@ public class AreaTest {
 	public void differentUnitsCanBeSummed() {
 		assertThat(
 				Area.of(
-					new GenericShape(new CM2(100)),
-					new GenericShape(new M2("0.01"))
+					new Shape(new CM2(100)),
+					new Shape(new M2("0.01"))
 						),
 				is(new CM2(200))
 				);

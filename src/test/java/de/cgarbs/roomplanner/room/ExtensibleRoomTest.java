@@ -15,7 +15,7 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
-import de.cgarbs.roomplanner.shape.GenericShape;
+import de.cgarbs.roomplanner.shape.Shape;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
 import de.cgarbs.roomplanner.test.stub.StubExtension;
@@ -66,9 +66,9 @@ public class ExtensibleRoomTest {
 	 */
 	private Extension getExtension() {
 		return new StubExtension(
-				new GenericShape(new CM2(1)),
-				new GenericShape(new CM2(2)),
-				new GenericShape(new CM2(3))
+				new Shape(new CM2(1)),
+				new Shape(new CM2(2)),
+				new Shape(new CM2(3))
 				);
 	}
 

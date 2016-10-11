@@ -11,8 +11,8 @@ import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
 import de.cgarbs.roomplanner.room.wall.Walls;
-import de.cgarbs.roomplanner.shape.GenericShape;
 import de.cgarbs.roomplanner.shape.Rectangle;
+import de.cgarbs.roomplanner.shape.Shape;
 
 /**
  * A corner inset is an inward facing corner in a corner :-)
@@ -54,12 +54,12 @@ public class CornerInset implements Extension {
 
 	@Override
 	public void extendFloor(Floor floor) {
-		floor.add(new GenericShape(getCutoutArea()));
+		floor.add(new Shape(getCutoutArea()));
 	}
 
 	@Override
 	public void extendCeiling(Ceiling ceiling) {
-		ceiling.add(new GenericShape(getCutoutArea()));
+		ceiling.add(new Shape(getCutoutArea()));
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class CornerInset implements Extension {
 		Area wallArea = new Rectangle(height, length[wallNumber]).getArea();
 
 		// this is a zero-sum change, but for bookkeeping sakes we record it
-		wall.add(new GenericShape(wallArea.negate()));
-		wall.add(new GenericShape(wallArea));
+		wall.add(new Shape(wallArea.negate()));
+		wall.add(new Shape(wallArea));
 	}
 }

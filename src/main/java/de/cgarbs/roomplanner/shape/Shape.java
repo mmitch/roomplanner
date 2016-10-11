@@ -10,7 +10,7 @@ public class Shape {
 	
 	private Area area;
 
-	protected Shape(Area area) {
+	public Shape(Area area) {
 		this.area = area;
 	}
 
