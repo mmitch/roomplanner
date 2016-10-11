@@ -10,8 +10,8 @@ import de.cgarbs.roomplanner.shape.Rectangle;
 
 public class Floor extends Extensible {
 
-	public Floor(Length width, Length height) {
-		super(new Rectangle(width, height));
+	public Floor(Length northSouth, Length eastWest) {
+		super(new Rectangle(northSouth, eastWest));
 	}
 
 }
