@@ -4,20 +4,12 @@
  */
 package de.cgarbs.roomplanner.shape;
 
-import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
 
-public class Rectangle implements Shape {
+public class Rectangle extends Shape {
 
-	private Area area;
-	
 	public Rectangle(Length width, Length height) {
-		area = width.multiplyWith(height);
+		super(width.multiplyWith(height));
 	}
 	
-	@Override
-	public Area getArea() {
-		return area;
-	}
-
 }

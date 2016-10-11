@@ -6,17 +6,17 @@ package de.cgarbs.roomplanner.shape;
 
 import java.math.BigDecimal;
 
-import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.length.LengthUnit;
 import de.cgarbs.roomplanner.math.Math;
 
-public class RightTriangle implements Shape {
+public class RightTriangle extends Shape {
 
 	private Length b;
 	private Length a;
 
 	public RightTriangle(Length a, Length b) {
+		super(new Rectangle(a, b).getArea().divideBy(new BigDecimal(2)));
 		this.a = a;
 		this.b = b;
 	}
@@ -29,11 +29,6 @@ public class RightTriangle implements Shape {
 				Math.sqrt(aSquared.add(bSquared)),
 				unit
 				);
-	}
-	
-	@Override
-	public Area getArea() {
-		return new Rectangle(a, b).getArea().divideBy(new BigDecimal(2));
 	}
 
 }

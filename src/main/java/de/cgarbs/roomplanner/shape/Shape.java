@@ -6,8 +6,20 @@ package de.cgarbs.roomplanner.shape;
 
 import de.cgarbs.roomplanner.area.Area;
 
-public interface Shape {
+public class Shape {
+	
+	private Area area;
 
-	Area getArea();
+	protected Shape(Area area) {
+		this.area = area;
+	}
+
+	public Area getArea() {
+		return area;
+	}
+	
+	public Shape negate() {
+		return new Shape(area.negate());
+	}
 	
 }
