@@ -5,7 +5,7 @@
 package de.cgarbs.roomplanner.room.extension;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -28,12 +28,15 @@ public class SlopedWallTest {
 
 	@Test
 	public void slopedEastWallReducesCeilingAreaByNorthSouthWallLengthTimesDepth() {
-		Ceiling ceiling = new Ceiling(new CM(20), new CM(10));
+		Ceiling ceiling = new Ceiling(new CM(10), new CM(20));
 		slope.extendCeiling(ceiling);
 		assertThat(ceiling.getArea(), is(new CM2(200 - 10*12)));
 	}
 
-	// FIXME: test for wall extension
+	@Test
+	public void slopedEastWallIncreasesWallByComplicatedThinie() {
+		fail("FIXME: test for wall extension - not implemented");
+	}
 	
 	// FIXME: tests for different wall directions (test an internal method?)
 }

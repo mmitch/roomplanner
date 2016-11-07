@@ -10,8 +10,21 @@ import de.cgarbs.roomplanner.shape.Rectangle;
 
 public class Ceiling extends Extensible {
 
+	private Length northSouth;
+	private Length eastWest;
+
 	public Ceiling(Length northSouth, Length eastWest) {
 		super(new Rectangle(northSouth, eastWest));
+		this.northSouth = northSouth;
+		this.eastWest = eastWest;
+	}
+
+	public Length getNorthSouthLength() {
+		return northSouth;
+	}
+
+	public Length getEastWestLength() {
+		return eastWest;
 	}
 
 }

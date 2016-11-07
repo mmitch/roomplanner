@@ -10,6 +10,7 @@ import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.WallPosition;
 import de.cgarbs.roomplanner.room.wall.Walls;
 import de.cgarbs.roomplanner.shape.Rectangle;
+import de.cgarbs.roomplanner.shape.Shape;
 
 public class SlopedWall implements Extension {
 
@@ -30,7 +31,7 @@ public class SlopedWall implements Extension {
 
 	@Override
 	public void extendCeiling(Ceiling ceiling) {
-		// TODO Auto-generated method stub
+		ceiling.add(new Rectangle(getWallLength(ceiling), depth).negate());
 	}
 
 	@Override
