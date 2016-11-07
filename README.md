@@ -45,7 +45,7 @@ copyright
 ---------
 
 RoomPlanner - calculation tool for room refurbishments  
-Copyright (C) 2016  Christian Garbs <mitch@cgarbs.de>
+Copyright (C) 2016  Christian Garbs <mitch@cgarbs.de>  
 Licensed under GNU GPL v3 (or later)
 
 This program is free software: you can redistribute it and/or modify
