@@ -8,16 +8,25 @@ import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.extension.Extensible;
 import de.cgarbs.roomplanner.shape.Rectangle;
 
-public class Wall extends Extensible {
-
+public class Wall extends Extensible
+{
 	Length height;
+	private Length length;
 
-	public Wall(Length length, Length height) {
+	public Wall(Length length, Length height)
+	{
 		super(new Rectangle(length, height));
+		this.length = length;
 		this.height = height;
 	}
 
-	public Length getHeight() {
+	public Length getHeight()
+	{
 		return height;
+	}
+
+	public Length getLength()
+	{
+		return length;
 	}
 }
