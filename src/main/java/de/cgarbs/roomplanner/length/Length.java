@@ -9,36 +9,59 @@ import java.math.BigDecimal;
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.types.ScalarWithUnit;
 
-public class Length extends ScalarWithUnit<LengthUnit> {
-	
-	protected Length(long value, LengthUnit unit) {
+public class Length extends ScalarWithUnit<LengthUnit>
+{
+
+	protected Length(long value, LengthUnit unit)
+	{
 		super(value, unit);
 	}
 
-	public Length(BigDecimal value, LengthUnit unit) {
+	public Length(BigDecimal value, LengthUnit unit)
+	{
 		super(value, unit);
 	}
 
-	public Area multiplyWith(Length otherLength) {
-		return new Area( 
-				this.getValue().multiply(otherLength.convertTo(getUnit()).getValue()),
-				this.getUnit().getSquaredUnit()
-				);
+	public Area multiplyWith(Length otherLength)
+	{
+		return new Area( //
+				this.getValue().multiply(otherLength.convertTo(getUnit()).getValue()), //
+				this.getUnit().getSquaredUnit() //
+		);
 	}
 
-	public static Length of(String string) {
+	public static Length of(String string)
+	{
 		String value = "0";
 		String unit = "";
-		
+
 		String[] parts = string.split("\\s+");
-		if (parts.length > 0) {
+		if (parts.length > 0)
+		{
 			value = parts[0];
 		}
-		if (parts.length > 1) {
+		if (parts.length > 1)
+		{
 			unit = parts[1];
 		}
 
 		return new Length(new BigDecimal(value), LengthUnit.of(unit));
 	}
-	
+
+	public Length add(Length otherLength)
+	{
+		return new Length( //
+				this.getValue().add(otherLength.convertTo(getUnit()).getValue()), //
+				this.getUnit() //
+		);
+	}
+
+	public Length negate()
+	{
+		return new Length( //
+				getValue().negate(), //
+				getUnit() //
+		);
+	}
+
 }

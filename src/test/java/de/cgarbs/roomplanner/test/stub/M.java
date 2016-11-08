@@ -4,13 +4,22 @@
  */
 package de.cgarbs.roomplanner.test.stub;
 
+import java.math.BigDecimal;
+
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.length.LengthUnit;
 
-public class M extends Length {
+public class M extends Length
+{
 
-	public M(int value) {
-		super(value, LengthUnit.M);
+	public M(String value)
+	{
+		super(new BigDecimal(value), LengthUnit.M);
+	}
+
+	public M(int value)
+	{
+		this(String.valueOf(value));
 	}
 
 }

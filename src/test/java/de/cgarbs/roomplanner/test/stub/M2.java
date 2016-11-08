@@ -9,10 +9,17 @@ import java.math.BigDecimal;
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.area.AreaUnit;
 
-public class M2 extends Area {
+public class M2 extends Area
+{
 
-	public M2(String value) {
+	public M2(String value)
+	{
 		super(new BigDecimal(value), AreaUnit.M2);
+	}
+
+	public M2(int value)
+	{
+		this(String.valueOf(value));
 	}
 
 }
