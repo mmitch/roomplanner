@@ -5,9 +5,23 @@
 package de.cgarbs.roomplanner.room.wall;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
-public class Walls extends HashMap<WallPosition, Wall> {
+import de.cgarbs.roomplanner.area.Area;
 
+public class Walls extends HashMap<WallPosition, Wall>
+{
 	private static final long serialVersionUID = 1L;
+
+	public Area getArea()
+	{
+		Iterator<Wall> iter = values().iterator();
+		Area area = iter.next().getArea();
+		while (iter.hasNext())
+		{
+			area = area.add(iter.next().getArea());
+		}
+		return area;
+	}
 
 }
