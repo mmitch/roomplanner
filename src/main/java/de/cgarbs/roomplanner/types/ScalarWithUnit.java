@@ -6,35 +6,43 @@ package de.cgarbs.roomplanner.types;
 
 import java.math.BigDecimal;
 
-public class ScalarWithUnit<U extends Unit> {
+public class ScalarWithUnit<U extends Unit>
+{
 
 	private BigDecimal value;
 	private U unit;
 
-	public ScalarWithUnit(BigDecimal value, U unit) {
+	public ScalarWithUnit(BigDecimal value, U unit)
+	{
 		this.value = value;
 		this.unit = unit;
 	}
-	
-	public ScalarWithUnit(long value, U unit) {
+
+	public ScalarWithUnit(long value, U unit)
+	{
 		this(new BigDecimal(value), unit);
 	}
-	
-	public String forDisplay() {
+
+	public String forDisplay()
+	{
 		return value.stripTrailingZeros().toPlainString() + unit.forDisplay();
 	}
-	
-	public BigDecimal getValue() {
+
+	public BigDecimal getValue()
+	{
 		return value;
 	}
-	
-	public U getUnit() {
+
+	public U getUnit()
+	{
 		return unit;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (! (obj instanceof ScalarWithUnit)) {
+	public boolean equals(Object obj)
+	{
+		if (!(obj instanceof ScalarWithUnit))
+		{
 			return false;
 		}
 		ScalarWithUnit<?> other = (ScalarWithUnit<?>) obj;
@@ -42,19 +50,31 @@ public class ScalarWithUnit<U extends Unit> {
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return forDisplay();
 	}
 
-	public ScalarWithUnit<U> convertTo(U targetUnit) {
-		if (this.unit == targetUnit) {
+	public ScalarWithUnit<U> convertTo(U targetUnit)
+	{
+		if (this.unit == targetUnit)
+		{
 			return this;
 		}
-		BigDecimal sourceBaseFactor = this.unit.getBaseFactor();
 		BigDecimal targetBaseFactor = targetUnit.getBaseFactor();
-		return new ScalarWithUnit<U>(
-				value.divide(targetBaseFactor).multiply(sourceBaseFactor),
-				targetUnit
-				);
+		BigDecimal targetValue = convertToBaseFactor(targetBaseFactor);
+		return new ScalarWithUnit<U>(targetValue, targetUnit);
 	}
+
+	public BigDecimal getInBaseUnit()
+	{
+		return convertToBaseFactor(BigDecimal.ONE);
+	}
+
+	private BigDecimal convertToBaseFactor(BigDecimal targetBaseFactor)
+	{
+		BigDecimal sourceBaseFactor = this.unit.getBaseFactor();
+		return value.divide(targetBaseFactor).multiply(sourceBaseFactor);
+	}
+
 }

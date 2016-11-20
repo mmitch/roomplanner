@@ -16,48 +16,62 @@ import org.junit.Test;
 import de.cgarbs.roomplanner.area.AreaUnit;
 import de.cgarbs.roomplanner.length.LengthUnit;
 import de.cgarbs.roomplanner.test.stub.CM;
-import de.cgarbs.roomplanner.types.ScalarWithUnit;
 
-public class ScalarWithUnitTest {
+public class ScalarWithUnitTest
+{
 
 	@Test
-	public void forDisplayContainsValueAndUnit() {
+	public void forDisplayContainsValueAndUnit()
+	{
 		ScalarWithUnit<LengthUnit> scalar = new ScalarWithUnit<LengthUnit>(BigDecimal.TEN, LengthUnit.CM);
 		assertThat(scalar.forDisplay(), is("10cm"));
 	}
-	
+
 	@Test
-	public void twoScalarsWithEqualValueAndEqualUnitAreEqual() {
+	public void twoScalarsWithEqualValueAndEqualUnitAreEqual()
+	{
 		ScalarWithUnit<LengthUnit> scalar1 = new ScalarWithUnit<LengthUnit>(BigDecimal.TEN, LengthUnit.CM);
 		ScalarWithUnit<LengthUnit> scalar2 = new ScalarWithUnit<LengthUnit>(BigDecimal.TEN, LengthUnit.CM);
 		assertThat(scalar1, is(scalar2));
 	}
 
 	@Test
-	public void twoScalarsWithDifferentUnitsAndEqualValuesAreNotEqual() {
+	public void twoScalarsWithDifferentUnitsAndEqualValuesAreNotEqual()
+	{
 		ScalarWithUnit<LengthUnit> scalar1 = new ScalarWithUnit<LengthUnit>(BigDecimal.TEN, LengthUnit.CM);
 		ScalarWithUnit<AreaUnit> scalar2 = new ScalarWithUnit<AreaUnit>(BigDecimal.TEN, AreaUnit.CM2);
 		assertThat(scalar1, not(scalar2));
 	}
 
 	@Test
-	public void twoScalarsWithDifferentValuesAndEqualUnitsAreNotEqual() {
+	public void twoScalarsWithDifferentValuesAndEqualUnitsAreNotEqual()
+	{
 		ScalarWithUnit<LengthUnit> scalar1 = new ScalarWithUnit<LengthUnit>(BigDecimal.ONE, LengthUnit.CM);
 		ScalarWithUnit<LengthUnit> scalar2 = new ScalarWithUnit<LengthUnit>(BigDecimal.TEN, LengthUnit.CM);
 		assertThat(scalar1, not(scalar2));
 	}
 
 	@Test
-	public void scalarCanBeConvertedToDifferentUnit() {
+	public void scalarCanBeConvertedToDifferentUnit()
+	{
 		ScalarWithUnit<LengthUnit> scalar = new ScalarWithUnit<LengthUnit>(BigDecimal.ONE, LengthUnit.M);
 		ScalarWithUnit<LengthUnit> convertedScalar = scalar.convertTo(LengthUnit.CM);
 		assertThat(convertedScalar, is(new CM(100)));
 	}
-	
+
 	@Test
-	public void typeConversionIsSkippedIfNotNeeded() {
+	public void typeConversionIsSkippedIfNotNeeded()
+	{
 		ScalarWithUnit<LengthUnit> scalar = new ScalarWithUnit<LengthUnit>(BigDecimal.ONE, LengthUnit.M);
 		ScalarWithUnit<LengthUnit> convertedScalar = scalar.convertTo(LengthUnit.M);
 		assertThat(convertedScalar, sameInstance(scalar));
+	}
+
+	@Test
+	public void getInBaseUnitRecalculatesToBaseFactor1()
+	{
+		ScalarWithUnit<LengthUnit> scalar = new ScalarWithUnit<LengthUnit>(BigDecimal.ONE, LengthUnit.M);
+		BigDecimal unitless = scalar.getInBaseUnit();
+		assertThat(unitless, is(new BigDecimal(100)));
 	}
 }
