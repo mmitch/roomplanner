@@ -35,10 +35,7 @@ on older versions as well (but I did not test this).
 TODOs
 -----
 
- - support sloped ceilings
- - add 3D export to visualize the parsed room (only if I really get
-   bored, but this would help to ensure a complex setup got parsed as
-   desired)
+ - finish 3D export to visualize the parsed room (Extensions still missing)
    
    
 copyright
