@@ -12,6 +12,8 @@ import de.cgarbs.roomplanner.types.ScalarWithUnit;
 public class Length extends ScalarWithUnit<LengthUnit>
 {
 
+	public static final Length ZERO = new Length(0, LengthUnit.CM);
+
 	protected Length(long value, LengthUnit unit)
 	{
 		super(value, unit);

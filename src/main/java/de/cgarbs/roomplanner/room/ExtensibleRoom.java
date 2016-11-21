@@ -15,7 +15,7 @@ public class ExtensibleRoom implements Room
 
 	private Floor floor;
 	private Ceiling ceiling;
-	private Walls walls;
+	Walls walls;
 
 	public ExtensibleRoom(Floor floor, Ceiling ceiling, Walls walls)
 	{

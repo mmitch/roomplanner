@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import de.cgarbs.roomplanner.pos.Position;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.extension.Extension;
 import de.cgarbs.roomplanner.room.floor.Floor;
@@ -57,7 +58,7 @@ public class ExtensibleRoomTest
 	private ExtensibleRoom getTestRoom()
 	{
 		Walls walls = new Walls();
-		walls.put(new Wall(WallPosition.EAST, new CM(1), new CM(4)));
+		walls.put(new Wall(WallPosition.EAST, new CM(1), new CM(4), Position.ORIGIN));
 
 		return new ExtensibleRoom(new Floor(new CM(1), new CM(2)), new Ceiling(new CM(1), new CM(3)), walls);
 	}

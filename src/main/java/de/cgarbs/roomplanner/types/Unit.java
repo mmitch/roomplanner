@@ -6,10 +6,9 @@ package de.cgarbs.roomplanner.types;
 
 import java.math.BigDecimal;
 
-public interface Unit {
-
+public interface Unit
+{
 	String forDisplay();
 
 	BigDecimal getBaseFactor();
-	
 }

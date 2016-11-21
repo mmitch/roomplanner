@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import de.cgarbs.roomplanner.pos.Position;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
@@ -60,9 +61,9 @@ public class SlopedWallTest
 		 */
 
 		Walls walls = new Walls();
-		walls.put(new Wall(WallPosition.SOUTH, new M(6), new M(5)));
-		walls.put(new Wall(WallPosition.WEST, new M(8), new M(5)));
-		walls.put(new Wall(WallPosition.NORTH, new M(6), new M(5)));
+		walls.put(new Wall(WallPosition.SOUTH, new M(6), new M(5), Position.ORIGIN));
+		walls.put(new Wall(WallPosition.WEST, new M(8), new M(5), Position.ORIGIN));
+		walls.put(new Wall(WallPosition.NORTH, new M(6), new M(5), Position.ORIGIN));
 
 		// wall height is 5, so an offset of 2 gives A~B = 3
 		// B~C is 4 (depth)

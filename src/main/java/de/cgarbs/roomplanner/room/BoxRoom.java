@@ -7,6 +7,7 @@ package de.cgarbs.roomplanner.room;
 import java.util.stream.Stream;
 
 import de.cgarbs.roomplanner.length.Length;
+import de.cgarbs.roomplanner.pos.Position;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Wall;
@@ -18,7 +19,11 @@ public class BoxRoom extends ExtensibleRoom
 
 	public BoxRoom(Length northSouth, Length eastWest, Length height)
 	{
-		super(createFloor(northSouth, eastWest), createCeiling(northSouth, eastWest), createWalls(northSouth, eastWest, height));
+		super( //
+				createFloor(northSouth, eastWest), //
+				createCeiling(northSouth, eastWest), //
+				createWalls(northSouth, eastWest, height) //
+		);
 	}
 
 	private static Floor createFloor(Length northSouth, Length eastWest)
@@ -42,10 +47,16 @@ public class BoxRoom extends ExtensibleRoom
 
 	private static Wall createWall(WallPosition position, Length northSouth, Length eastWest, Length height)
 	{
-		return new Wall(position, getRelevantLength(position, northSouth, eastWest), height);
+		return new Wall( //
+				position, //
+				getLength(position, northSouth, eastWest), //
+				height, //
+				getOffset(position, northSouth, eastWest) //
+		);
+
 	}
 
-	private static Length getRelevantLength(WallPosition position, Length northSouth, Length eastWest)
+	private static Length getLength(WallPosition position, Length northSouth, Length eastWest)
 	{
 		switch (position)
 		{
@@ -55,6 +66,21 @@ public class BoxRoom extends ExtensibleRoom
 			case NORTH:
 			case SOUTH:
 				return eastWest;
+		}
+		return null; // unreachable code
+	}
+
+	private static Position getOffset(WallPosition position, Length northSouth, Length eastWest)
+	{
+		switch (position)
+		{
+			case NORTH:
+				return new Position(northSouth, Length.ZERO);
+			case EAST:
+				return new Position(Length.ZERO, eastWest);
+			case SOUTH:
+			case WEST:
+				return new Position(Length.ZERO, Length.ZERO);
 		}
 		return null; // unreachable code
 	}

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import de.cgarbs.roomplanner.pos.Position;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.corner.CornerPosition;
 import de.cgarbs.roomplanner.room.floor.Floor;
@@ -75,7 +76,7 @@ public class CornerInsetTest
 		Walls walls = new Walls();
 		for (WallPosition wallPosition : WallPosition.values())
 		{
-			walls.put(new Wall(wallPosition, new CM(4), new CM(5)));
+			walls.put(new Wall(wallPosition, new CM(4), new CM(5), Position.ORIGIN));
 		}
 		return walls;
 	}
