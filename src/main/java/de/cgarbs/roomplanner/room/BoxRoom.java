@@ -4,6 +4,8 @@
  */
 package de.cgarbs.roomplanner.room;
 
+import java.util.stream.Stream;
+
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.floor.Floor;
@@ -32,11 +34,29 @@ public class BoxRoom extends ExtensibleRoom
 	private static Walls createWalls(Length northSouth, Length eastWest, Length height)
 	{
 		Walls walls = new Walls();
-		walls.put(new Wall(WallPosition.NORTH, eastWest, height));
-		walls.put(new Wall(WallPosition.EAST, northSouth, height));
-		walls.put(new Wall(WallPosition.SOUTH, eastWest, height));
-		walls.put(new Wall(WallPosition.WEST, northSouth, height));
+		Stream.of(WallPosition.values()) //
+				.map((position) -> createWall(position, northSouth, eastWest, height)) //
+				.forEach(walls::put);
 		return walls;
+	}
+
+	private static Wall createWall(WallPosition position, Length northSouth, Length eastWest, Length height)
+	{
+		return new Wall(position, getRelevantLength(position, northSouth, eastWest), height);
+	}
+
+	private static Length getRelevantLength(WallPosition position, Length northSouth, Length eastWest)
+	{
+		switch (position)
+		{
+			case EAST:
+			case WEST:
+				return northSouth;
+			case NORTH:
+			case SOUTH:
+				return eastWest;
+		}
+		return null; // unreachable code
 	}
 
 }
