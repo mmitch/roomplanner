@@ -7,6 +7,9 @@ package de.cgarbs.roomplanner.room;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.Test;
 
 import de.cgarbs.roomplanner.pos.Position;
@@ -19,6 +22,7 @@ import de.cgarbs.roomplanner.room.wall.Walls;
 import de.cgarbs.roomplanner.shape.Shape;
 import de.cgarbs.roomplanner.test.stub.CM;
 import de.cgarbs.roomplanner.test.stub.CM2;
+import de.cgarbs.roomplanner.test.stub.M;
 import de.cgarbs.roomplanner.test.stub.StubExtension;
 
 public class ExtensibleRoomTest
@@ -50,6 +54,29 @@ public class ExtensibleRoomTest
 	{
 		ExtensibleRoom testRoom = getTestRoom();
 		assertThat(testRoom.add(getExtension()).add(getExtension()).getFloorArea(), is(new CM2(4)));
+	}
+
+	@Test
+	public void wallsFacesAreFacesOfTheIndividualWallsConcatinated()
+	{
+		Ceiling ceiling = new Ceiling(new M(8), new M(5));
+		Floor floor = new Floor(new M(7), new M(3));
+		Wall wall = new Wall(WallPosition.NORTH, new CM(3), new CM(12), new Position(new M(2), new M(4)));
+		Walls walls = Walls.of(wall);
+
+		ExtensibleRoom room = new ExtensibleRoom(floor, ceiling, walls);
+
+		// no inlining: compiler breaks without the HasFace type hint!
+		Stream<HasFaces> expected = Stream.of(wall, floor);
+
+		assertThat( //
+				room.faces() //
+						.collect(Collectors.toSet()), //
+				is( //
+						expected.flatMap(HasFaces::faces) //
+								.collect(Collectors.toSet()) //
+				) //
+		);
 	}
 
 	/**

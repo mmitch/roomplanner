@@ -6,10 +6,13 @@ package de.cgarbs.roomplanner.room;
 
 import de.cgarbs.roomplanner.area.Area;
 
-public interface Room {
+public interface Room extends HasFaces
+{
 
 	public Area getFloorArea();
+
 	public Area getCeilingArea();
+
 	public Area getWallArea();
-	
+
 }

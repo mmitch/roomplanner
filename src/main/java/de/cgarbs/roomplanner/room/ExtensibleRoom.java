@@ -4,11 +4,14 @@
  */
 package de.cgarbs.roomplanner.room;
 
+import java.util.stream.Stream;
+
 import de.cgarbs.roomplanner.area.Area;
 import de.cgarbs.roomplanner.room.ceiling.Ceiling;
 import de.cgarbs.roomplanner.room.extension.Extension;
 import de.cgarbs.roomplanner.room.floor.Floor;
 import de.cgarbs.roomplanner.room.wall.Walls;
+import de.cgarbs.wavefront.Face;
 
 public class ExtensibleRoom implements Room
 {
@@ -42,6 +45,17 @@ public class ExtensibleRoom implements Room
 		return walls.getArea();
 	}
 
+	@Override
+	public Stream<Face> faces()
+	{
+		// no inlining: compiler breaks without the HasFaces type hint!
+		// Stream<Face> stream = Stream.of(floor,
+		// walls).flatMap(HasFaces::faces);
+		// return stream;
+		Stream<HasFaces> stream = Stream.of(floor, walls);
+		return stream.flatMap(HasFaces::faces);
+	}
+
 	public ExtensibleRoom add(Extension extension)
 	{
 		extension.extendFloor(floor);
@@ -49,4 +63,5 @@ public class ExtensibleRoom implements Room
 		extension.extendWalls(walls);
 		return this;
 	}
+
 }
