@@ -70,7 +70,7 @@ public class SlopedWall implements Extension
 			case SOUTH:
 				return ceiling.getEastWestLength();
 		}
-		return null; // FIXME: error handling
+		return null; // unreachable code
 	}
 
 }
