@@ -8,6 +8,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -30,7 +31,9 @@ public class WallTest
 				new V(m(2), m(5), m(0)) //
 		);
 
-		assertThat(wall.faces(), is(Collections.singletonList(expected)));
+		assertThat( //
+				wall.faces().collect(Collectors.toList()), //
+				is(Collections.singletonList(expected)));
 	}
 
 	private static double m(int length)

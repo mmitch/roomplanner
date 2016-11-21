@@ -4,8 +4,7 @@
  */
 package de.cgarbs.roomplanner.room.floor;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.stream.Stream;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.room.HasFaces;
@@ -16,18 +15,18 @@ import de.cgarbs.wavefront.V;
 
 public class Floor extends Extensible implements HasFaces
 {
-	private List<Face> faces;
+	private Face face;
 
 	public Floor(Length northSouth, Length eastWest)
 	{
 		super(new Rectangle(northSouth, eastWest));
-		this.faces = Collections.singletonList(calculateFace(northSouth, eastWest));
+		this.face = calculateFace(northSouth, eastWest);
 	}
 
 	@Override
-	public List<Face> faces()
+	public Stream<Face> faces()
 	{
-		return faces;
+		return Stream.of(face);
 	}
 
 	private Face calculateFace(Length northSouth, Length eastWest)

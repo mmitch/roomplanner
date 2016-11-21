@@ -4,11 +4,11 @@
  */
 package de.cgarbs.roomplanner.room;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 import de.cgarbs.wavefront.Face;
 
 public interface HasFaces
 {
-	List<Face> faces();
+	Stream<Face> faces();
 }

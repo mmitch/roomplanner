@@ -6,8 +6,6 @@ package de.cgarbs.roomplanner.room.wall;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import de.cgarbs.roomplanner.area.Area;
@@ -42,11 +40,10 @@ public class Walls extends HashMap<WallPosition, Wall> implements HasFaces
 	}
 
 	@Override
-	public List<Face> faces()
+	public Stream<Face> faces()
 	{
 		return values().stream() //
-				.flatMap((wall) -> wall.faces.stream()) //
-				.collect(Collectors.toList());
+				.flatMap(Wall::faces);
 	}
 
 }

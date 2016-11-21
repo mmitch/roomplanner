@@ -4,8 +4,7 @@
  */
 package de.cgarbs.roomplanner.room.wall;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.stream.Stream;
 
 import de.cgarbs.roomplanner.length.Length;
 import de.cgarbs.roomplanner.pos.Position;
@@ -21,7 +20,7 @@ public class Wall extends Extensible implements HasFaces
 	private Length length;
 	private WallPosition position;
 	private Position offset; // TODO: don't remember offset
-	List<Face> faces;
+	Face face;
 
 	public Wall(WallPosition position, Length length, Length height, Position offset)
 	{
@@ -30,7 +29,7 @@ public class Wall extends Extensible implements HasFaces
 		this.length = length;
 		this.height = height;
 		this.offset = offset;
-		this.faces = Collections.singletonList(calculateFace());
+		this.face = calculateFace();
 	}
 
 	public Length getHeight()
@@ -54,9 +53,9 @@ public class Wall extends Extensible implements HasFaces
 	}
 
 	@Override
-	public List<Face> faces()
+	public Stream<Face> faces()
 	{
-		return faces;
+		return Stream.of(face);
 	}
 
 	private Face calculateFace()

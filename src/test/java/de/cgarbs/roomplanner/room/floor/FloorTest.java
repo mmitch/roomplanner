@@ -8,6 +8,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class FloorTest
 	{
 		Floor floor = new Floor(new M(3), new M(5));
 		assertThat( //
-				floor.faces(), //
+				floor.faces().collect(Collectors.toList()), //
 				is( //
 						Arrays.asList( //
 								new Face( //
