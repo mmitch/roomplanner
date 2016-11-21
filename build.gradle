@@ -21,6 +21,15 @@ jacocoTestReport {
 		xml.enabled true
 		html.enabled true
 	}
+
+	/* exclude RoomPlanner class from test coverage, it's just a quick demo */
+	afterEvaluate {
+		classDirectories = files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+				'**/RoomPlanner.class'
+			])
+		})
+	}
 }
 
 repositories {
