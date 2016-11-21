@@ -28,9 +28,9 @@ public class FloorTest
 						Arrays.asList( //
 								new Face( //
 										new V(0, 0, 0), //
-										new V(300, 0, 0), //
-										new V(300, 500, 0), //
-										new V(0, 500, 0) //
+										new V(0, 300, 0), //
+										new V(500, 300, 0), //
+										new V(500, 0, 0) //
 								) //
 						) //
 				) //

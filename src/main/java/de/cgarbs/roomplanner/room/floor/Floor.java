@@ -35,9 +35,9 @@ public class Floor extends Extensible implements HasFaces
 		double ew = eastWest.getInBaseUnit().doubleValue();
 		return new Face( //
 				new V(0, 0, 0), //
-				new V(ns, 0, 0), //
-				new V(ns, ew, 0), //
-				new V(0, ew, 0) //
+				new V(0, ns, 0), //
+				new V(ew, ns, 0), //
+				new V(ew, 0, 0) //
 		);
 	}
 
