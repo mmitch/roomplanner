@@ -12,10 +12,12 @@ public class Wall extends Extensible
 {
 	Length height;
 	private Length length;
+	private WallPosition position;
 
-	public Wall(Length length, Length height)
+	public Wall(WallPosition position, Length length, Length height)
 	{
 		super(new Rectangle(length, height));
+		this.position = position;
 		this.length = length;
 		this.height = height;
 	}
@@ -28,5 +30,10 @@ public class Wall extends Extensible
 	public Length getLength()
 	{
 		return length;
+	}
+
+	public WallPosition getPosition()
+	{
+		return position;
 	}
 }

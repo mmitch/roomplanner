@@ -24,4 +24,9 @@ public class Walls extends HashMap<WallPosition, Wall>
 		return area;
 	}
 
+	public void put(Wall wall)
+	{
+		put(wall.getPosition(), wall);
+	}
+
 }

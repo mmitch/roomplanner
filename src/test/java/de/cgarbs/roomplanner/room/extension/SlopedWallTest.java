@@ -60,9 +60,9 @@ public class SlopedWallTest
 		 */
 
 		Walls walls = new Walls();
-		walls.put(WallPosition.SOUTH, new Wall(new M(6), new M(5)));
-		walls.put(WallPosition.WEST, new Wall(new M(8), new M(5)));
-		walls.put(WallPosition.NORTH, new Wall(new M(6), new M(5)));
+		walls.put(new Wall(WallPosition.SOUTH, new M(6), new M(5)));
+		walls.put(new Wall(WallPosition.WEST, new M(8), new M(5)));
+		walls.put(new Wall(WallPosition.NORTH, new M(6), new M(5)));
 
 		// wall height is 5, so an offset of 2 gives A~B = 3
 		// B~C is 4 (depth)
