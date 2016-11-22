@@ -27,10 +27,10 @@ public class WallsTest
 		Walls walls = Walls.of(wall1, wall2);
 
 		assertThat( //
-				walls.faces().collect(Collectors.toList()),
+				walls.faces().collect(Collectors.toSet()),
 				is( //
 						Stream.of(wall1, wall2) //
 								.flatMap(Wall::faces) //
-								.collect(Collectors.toList())));
+								.collect(Collectors.toSet())));
 	}
 }
