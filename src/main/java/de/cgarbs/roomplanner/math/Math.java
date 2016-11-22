@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 
 import org.jscience.mathematics.number.Real;
 
-public abstract class Math
+public interface Math
 {
 
-	public static BigDecimal sqrt(BigDecimal number)
+	static BigDecimal sqrt(BigDecimal number)
 	{
 		Real realNumber = Real.valueOf(number.toString());
 		Real sqrt = realNumber.sqrt();
