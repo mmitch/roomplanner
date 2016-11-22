@@ -48,3 +48,16 @@ dependencies {
 }
 
 apply plugin: 'eclipse'
+/* generate eclipse projects */
+
+eclipse {
+	classpath {
+		file {
+			whenMerged { classpath ->
+			 	classpath.entries.findAll{entry -> entry.kind == 'src' && entry.path == 'src/test/java'}.each{
+			 		entry -> entry.entryAttributes['ignore_optional_problems'] = true
+			 	}
+			}
+		}
+	}
+}
