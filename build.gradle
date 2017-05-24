@@ -32,6 +32,21 @@ jacocoTestReport {
 	}
 }
 
+apply plugin: 'info.solidsoft.pitest'
+/* mutation testing plugin
+   see: https://pitest.org https://gradle-pitest-plugin.solidsoft.info */
+pitest {
+	targetClasses = ['de.cgarbs.roomplanner.*']
+}
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath group: 'info.solidsoft.gradle.pitest', name: 'gradle-pitest-plugin', version: '1.1.11'
+	}
+}
+
 repositories {
     mavenCentral()
     repositories {
