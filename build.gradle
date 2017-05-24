@@ -4,14 +4,6 @@ targetCompatibility = 1.8
 apply plugin: 'application'
 mainClassName = 'de.cgarbs.roomplanner.RoomPlanner'
 
-apply plugin: 'jacoco'
-jacocoTestReport {
-	reports {
-		xml.enabled true
-		html.enabled true
-	}
-}
-
 defaultTasks 'check'
 
 apply plugin: 'jacoco'
